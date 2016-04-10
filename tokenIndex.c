@@ -124,7 +124,7 @@ char *TKGetNextToken( TokenizerT * tk ) {
     }
 
     //Skip whitespace characters, they still act as delimiters for tokens
-    while(isspace(*(inputStr+position)) != 0 || *(inputStr+position) == '\\')
+    while(isspace(*(inputStr+position)) != 0 || *(inputStr+position) == '\\') 
     {
         if(*(inputStr+position) == '\\')
         {
@@ -139,7 +139,12 @@ char *TKGetNextToken( TokenizerT * tk ) {
         start++;
         position = start;
     }
-    
+  
+    while(!isalpha(*(inputStr+start)) && *(inputStr+start) != '\0')
+    {
+        start++;
+        position++;
+    }
     if(*(inputStr+position) == '\0')
     {
         return NULL;
@@ -174,9 +179,9 @@ char *TKGetNextToken( TokenizerT * tk ) {
    
  
      //any other character will be recognized as bad token 
-     tk->tkType = 47;
-     tk->position = position+1;
-     return subString(inputStr,start, position);
+     //tk->tkType = 47;
+     //tk->position = position+1;
+     //return subString(inputStr,start, position);
     
     return NULL;
 }
