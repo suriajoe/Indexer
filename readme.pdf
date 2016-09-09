@@ -1,0 +1,23 @@
+Joseph Suria jrs460
+Kevin Cochran kjc199
+
+The main goal of our indexer is sorting tokens in Alphabetical order, while listing the files that contain their respective tokens and the number of occurences for each token in a decreasing order.
+
+The indexer will also list the path names of the files. The indexer will convert all uppercase characters to lowercase, will using white space and any non alphanumeric character as a delimiter for the tokens in the file.
+
+We have function for directory handler(dirHandler) which starts with a user choosen current directory and loops though all subdirectories, passing any files in the directories to our file handler(fileHandler).
+
+The fileHandler stores the path name of the file and the filename of all the files in the directory passed by dirHandler. fileHandler will call the tokenizer to parse through the tokens in the file. Tokenizer will convert all characters to lowercase, using non alphanumeric characters as delimiters. 
+
+We then use SICreate to store files,directories and tokens into a sorted list. SIInsert calls the function comparator function which lists the tokens in alphabetical order. SIInsert will enter the tokens in nodes that list in alphabetical order, while also maintaining the files with the corresponding number of token occurances in decreasing order. 
+
+SIDestroy removes all nodes, main will free dynamic memory and fileHandlers will close any opened files. Finally SIPrintFile writes the indexer sorting into a separate file, it list the files, tokens, and occurances.
+
+Time Usage
+the tokenizer portion of the program will run in O(n) time and take about (n) space complexity.
+
+the sorted-list portion of the program will run in about O(n^3) time and take about (n^2) space complexity.
+
+Directory/file handling will each run in O(n) and less than O(logn) space complexity.
+
+The total time complexity is O(n^3) and space average is (n^2).
